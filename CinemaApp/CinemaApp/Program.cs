@@ -1,47 +1,42 @@
-﻿using CinemaApp.Core.Contracts;
-using CinemaApp.Core.Services;
-using CinemaApp.Infrastructure.Data;
-using CinemaApp.Infrastructure.Data.Common;
+﻿using CinemaApp.Contracts;
+using CinemaApp.Data;
+using CinemaApp.Data.Common;
+using CinemaApp.Models;
+using CinemaApp.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-IConfiguration configuration = new ConfigurationBuilder()
-    .AddJsonFile("appsettings.json", true)
-    .AddUserSecrets(typeof(Program).Assembly)
-    .Build();
-
-var serviceProvider = new ServiceCollection()
-    .AddLogging()
-    .AddDbContext<CinemaDbContext>(options =>
-        options.UseSqlServer(configuration.GetConnectionString("CinemaConnection")))
-    .AddScoped<IRepository, Repository>()
-    .AddScoped<ICinemaService, CinemaService>()
-    .AddScoped<IMovieService, MovieService>()
-    .BuildServiceProvider();
-
-using var scope = serviceProvider.CreateScope();
-var dbContext = scope.ServiceProvider.GetRequiredService<CinemaDbContext>();
-
-//ResetDatabase(dbContext);
-
-ICinemaService? cinemaService = scope.ServiceProvider.GetService<ICinemaService>();
-IMovieService? movieService = scope.ServiceProvider.GetService<IMovieService>();
-
-if (cinemaService is null)
+namespace CinemaApp
 {
-    throw new InvalidOperationException("Failed to resolve ICinemaService.");
-}
-if (movieService is null)
-{
-    throw new InvalidOperationException("Failed to resolve IMovieService.");
-}
+    internal class Program
+    {
+        static async void Main(string[] args)
+        {
+            IConfiguration configuration = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json", true)
+                .AddUserSecrets(typeof(Program).Assembly)
+                .Build();
 
-ConsoleInterface.Run(cinemaService, movieService);
+            var serviceProvider = new ServiceCollection()
+                .AddLogging()
+                .AddDbContext<CinemaDbContext>(options =>
+                options.UseSqlServer(configuration.GetConnectionString("CinemaConnection")))
+                .AddScoped<IRepository, Repository>()
+                .AddScoped<ICinemaService, CinemaService>()
+                .BuildServiceProvider();
 
-static void ResetDatabase(CinemaDbContext dbContext)
-{
-    dbContext.Database.EnsureDeleted();
-    dbContext.Database.EnsureCreated();
+            using var scope = serviceProvider.CreateScope();
+
+            ICinemaService? service = scope.ServiceProvider.GetService<ICinemaService>();
+
+            if (service != null)
+            {
+                var cinema = new CinemaModel("Capitol", "Sofia, Car Boris III");
+
+                await service.AddCinemaAsync(cinema);
+            }
+
+        }
+    }
 }
-

@@ -1,27 +1,37 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using P02_FootballBetting.Common;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace P02_FootballBetting.Data.Models;
-
 public class User
 {
     public User()
     {
         Bets = new HashSet<Bet>();
     }
+    [Key]
     public int UserId { get; set; }
 
-    [MaxLength(80)]
+
+    [Required]
+    [MaxLength(ValidationConstants.UsernameMaxLength)]
     public string Username { get; set; } = null!;
 
-    [MaxLength(80)]
+    [Required]
+    [MaxLength(ValidationConstants.UsersNameMaxLength)]
     public string Name { get; set; } = null!;
 
-    [MaxLength(50)]
+    [Required]
+    [MinLength(ValidationConstants.PasswordMinLength)]
+    [MaxLength(ValidationConstants.PasswordMaxLength)]
     public string Password { get; set; } = null!;
 
-    public string? Email { get; set; }
+    [Column(TypeName = "VARCHAR")]
+    [MaxLength(ValidationConstants.EmailMaxLength)]
+    public string Email { get; set; } = null!;
 
     public decimal Balance { get; set; }
 
-    public virtual ICollection<Bet> Bets { get; set; } = null!;
+    public virtual ICollection<Bet> Bets { get; set; }
+
 }

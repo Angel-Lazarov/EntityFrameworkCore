@@ -1,0 +1,39 @@
+•	Name – text with length [3, 40]. Should contain letters (lower and upper case), digits, spaces, a dot sign ('.') and a dash ('-').  [RegularExpression(@"^[A-Za-z0-9\s\.\-]+$")]
+
+•	RegistrationNumber – text with length 8. First two characters are upper letters [A-Z], followed by four digits and the last two characters are upper letters [A-Z] again.  [RegularExpression(@"[A-Z]{2}\d{4}[A-Z]{2}")]
+
+•	Website – a string (required). First four characters are "www.", followed by upper and lower letters, digits or '-' and the last three characters are ".com".  [RegularExpression(@"^w{3}\.[a-zA-Z0-9-]+\.com$")]
+        Boolean Check True | False                                            [[RegularExpression(@"^(true|false)$")]
+*    phone numbers must have the following structure: three digits enclosed in parentheses, followed by a space, three more digits, a hyphen, and four final digits: Example -> (123) 456-7890  @"^\(\d{3}\) \d{3}-\d{4}$"
+------------------------------------------------------------------------------------------------------
+ {
+    "Name": "GLOU AVTO GmbH",
+    "Nationality": "Germany",
+    "Type": "usual",
+    "Trucks": [
+      25,
+      43,
+      78,
+      158,
+      47,
+      3
+    ]
+  },
+
+     [JsonProperty("Trucks")]
+        public int[] TruckIds { get; set; } = null!;
+-----------------------------------------------------------------------
+
+ [Required]
+        [Range(typeof(decimal), ProductPriceMinValue, ProductPriceMaxValue)]
+        //[Range(5.00, 1000.00)]
+        public decimal Price { get; set; }
+-----------------------------------------------------------------------------
+	string stringDate = "22/03/2020";
+	DateTime.TryParseExact(stringDate, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime date)
+---------------------------------------------------------------------------
+	string stringDate = "2022 - 08 - 29T00: 00:00";
+	DateTime.TryParse(stringDate, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime date);
+-------------------------------------------------------------------------------------------------
+ ContractEndDate = tf.Footballer.ContractEndDate.ToString("d", CultureInfo.InvariantCulture)  -->> 07/25/2020
+-----------------------------------------------------

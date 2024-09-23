@@ -1,15 +1,16 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Net;
+using Microsoft.EntityFrameworkCore;
 using P01_StudentSystem.Data.Models;
 
 namespace P01_StudentSystem.Data;
 
 public class StudentSystemContext : DbContext
-
-
 {
-    //public StudentSystemContext(DbContextOptions dbContextOptions) : base(dbContextOptions)
-    //{
-    //}
+    private const string ConnectionString = "Server =.;Database = StudentSystem;User Id = sa;Password = SoftUn!2021; TrustServerCertificate=True;";
+
+    public StudentSystemContext(DbContextOptions dbContextOptions) : base(dbContextOptions)
+    {
+    }
 
     public DbSet<Student> Students { get; set; }
     public DbSet<Course> Courses { get; set; }
@@ -18,16 +19,20 @@ public class StudentSystemContext : DbContext
     public DbSet<Homework> Homeworks { get; set; }
 
 
-    string connectionstring = "Server=192.168.88.40 ,1434; Database = StudentSystem; User Id = sa; Password = password;";
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseSqlServer(connectionstring);
-    }
+    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    //{
+    //    optionsBuilder.UseSqlServer(ConnectionString);
+    //}
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        // Configure the composite primary key (StudentId & CourseId)
         modelBuilder.Entity<StudentCourse>()
             .HasKey(sc => new { sc.StudentId, sc.CourseId });
+
+        modelBuilder.Entity<Student>()
+            .Property(s => s.PhoneNumber)
+            .IsUnicode(false);
     }
 }
+

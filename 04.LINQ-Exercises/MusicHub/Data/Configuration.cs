@@ -3,6 +3,8 @@
     public static class Configuration
     {
         public static string ConnectionString =
-            @"Server=192.168.88.40 ,1434;Database=MusicHub;User Id = sa; Password = password;";
+            @"Server=.;Database=MusicHub;User Id = sa;Password = SoftUn!2021; TrustServerCertificate=True;";
+
+        //"Server =.;Database = FootballBookmakerSystem;User Id = sa;Password = SoftUn!2021; TrustServerCertificate=True;"
     }
 }

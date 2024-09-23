@@ -1,16 +1,12 @@
-﻿namespace MusicHub.Data;
-
-public class Validations
+﻿namespace MusicHub.Data
 {
-    public const int SongNameLength = 20;
-
-    public const int AlbumNameLength = 40;
-
-    public const int PerformerFirstNameLength = 20;
-    public const int PerformerLastNameLength = 20;
-
-    public const int ProducerNameLength = 30;
-
-    public const int WriterNameLength = 20;
-
+    public class Validations
+    {
+        public const int WriterNameLength = 20;
+        public const int ProducerNameLength = 20;
+        public const int PhoneNumberLength = 20;
+        public const int PerformerNameLength = 20;
+        public const int AlbumNameLength = 40;
+        public const int SongNameLength = 20;
+    }
 }

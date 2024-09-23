@@ -1,0 +1,22 @@
+﻿namespace MusicHub.Data
+{
+    public static class Configuration
+    {
+        public static string ConnectionString =
+            @"Server=.;Database=MusicHub;User Id = sa;Password = SoftUn!2021; TrustServerCertificate=True;";
+
+        //"Server =.;Database = FootballBookmakerSystem;User Id = sa;Password = SoftUn!2021; TrustServerCertificate=True;"
+    }
+}
+
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=.;Database=aspnet-WebApplication1-d8e85208-67fa-47a0-91f7-ee8d95021874;User Id = sa;Password = SoftUn!2021;TrustServerCertificate=true;"
+  },
+
+
+
+
+
+
+website !!!
+    [RegularExpression(@"^w{3}\.[a-zA-Z0-9-]+.com$")]

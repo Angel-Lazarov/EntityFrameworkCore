@@ -61,6 +61,7 @@ namespace P01_StudentSystem.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HomeworkId"), 1L, 1);
 
                     b.Property<string>("Content")
+                        .IsRequired()
                         .HasColumnType("VARCHAR");
 
                     b.Property<int>("ContentType")
@@ -128,11 +129,12 @@ namespace P01_StudentSystem.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("NVARCHAR(100)");
 
                     b.Property<string>("PhoneNumber")
                         .HasMaxLength(10)
-                        .HasColumnType("VARCHAR(10)");
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(10)");
 
                     b.Property<DateTime>("RegisteredOn")
                         .HasColumnType("datetime2");

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Security.Cryptography;
+using Microsoft.EntityFrameworkCore;
 using SoftUni.Models;
 
 namespace SoftUni.Data
@@ -25,8 +26,7 @@ namespace SoftUni.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=192.168.88.40 ,1434; Database = SoftUni; User Id = sa; Password = password;");
+                optionsBuilder.UseSqlServer("Server =.;Database = SoftUni;User Id = sa;Password = SoftUn!2021; TrustServerCertificate=True;");
             }
         }
 
@@ -110,6 +110,7 @@ namespace SoftUni.Data
                     .WithMany(p => p.InverseManager)
                     .HasForeignKey(d => d.ManagerId)
                     .HasConstraintName("FK_Employees_Employees");
+                
             });
 
             modelBuilder.Entity<Project>(entity =>
@@ -138,18 +139,21 @@ namespace SoftUni.Data
 
             modelBuilder.Entity<EmployeeProject>(entity =>
             {
-                //Composite Primary Key
+                // Configure Composite Key
                 entity.HasKey(pk => new { pk.EmployeeId, pk.ProjectId });
-
-                // Configure Foreign keys
+                
+                // Configure Foreign Keys
                 entity.HasOne(ep => ep.Employee)
-                .WithMany(e => e.EmployeesProjects)
-                .HasForeignKey(ep => ep.EmployeeId);
+                    .WithMany(e => e.EmployeesProjects)
+                    .HasForeignKey(ep => ep.EmployeeId);
 
-                entity.HasOne(ep => ep.Project)
-                .WithMany(p => p.EmployeesProjects)
-                .HasForeignKey(ep => ep.ProjectId);
+                entity.HasOne(p => p.Project)
+                    .WithMany(p => p.EmployeesProjects)
+                    .HasForeignKey(ep => ep.ProjectId);
+
             });
+
+
 
 
             OnModelCreatingPartial(modelBuilder);

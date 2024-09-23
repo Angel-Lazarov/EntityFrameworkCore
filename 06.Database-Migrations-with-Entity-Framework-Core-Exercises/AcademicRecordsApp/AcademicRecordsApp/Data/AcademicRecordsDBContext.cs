@@ -14,41 +14,21 @@ namespace AcademicRecordsApp.Data
         {
         }
 
-        public virtual DbSet<Course> Courses { get; set; } = null!;
         public virtual DbSet<Exam> Exams { get; set; } = null!;
         public virtual DbSet<Grade> Grades { get; set; } = null!;
         public virtual DbSet<Student> Students { get; set; } = null!;
+        public DbSet<Course> Courses { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=192.168.88.40,1434;Database=AcademicRecordsDB;User Id=sa; Password=password;");
+                optionsBuilder.UseSqlServer("Server =.;Database=AcademicRecordsDB;User Id=sa;Password=SoftUn!2021; TrustServerCertificate=True;");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Course>(entity =>
-            {
-                entity.Property(e => e.Name).HasMaxLength(100);
-
-                entity.HasMany(d => d.Students)
-                    .WithMany(p => p.Courses)
-                    .UsingEntity<Dictionary<string, object>>(
-                        "StudentsCourse",
-                        l => l.HasOne<Student>().WithMany().HasForeignKey("StudentsId"),
-                        r => r.HasOne<Course>().WithMany().HasForeignKey("CoursesId"),
-                        j =>
-                        {
-                            j.HasKey("CoursesId", "StudentsId");
-
-                            j.ToTable("StudentsCourses");
-
-                            j.HasIndex(new[] { "StudentsId" }, "IX_StudentsCourses_StudentsId");
-                        });
-            });
-
             modelBuilder.Entity<Exam>(entity =>
             {
                 entity.Property(e => e.Name).HasMaxLength(100);
@@ -56,10 +36,6 @@ namespace AcademicRecordsApp.Data
 
             modelBuilder.Entity<Grade>(entity =>
             {
-                entity.HasIndex(e => e.ExamId, "IX_Grades_ExamId");
-
-                entity.HasIndex(e => e.StudentId, "IX_Grades_StudentId");
-
                 entity.Property(e => e.Value).HasColumnType("decimal(3, 2)");
 
                 entity.HasOne(d => d.Exam)
@@ -78,6 +54,11 @@ namespace AcademicRecordsApp.Data
             modelBuilder.Entity<Student>(entity =>
             {
                 entity.Property(e => e.FullName).HasMaxLength(100);
+            });
+
+            modelBuilder.Entity<Course>(entity =>
+            {
+                entity.Property(c => c.Name).HasMaxLength(100);
             });
 
             OnModelCreatingPartial(modelBuilder);

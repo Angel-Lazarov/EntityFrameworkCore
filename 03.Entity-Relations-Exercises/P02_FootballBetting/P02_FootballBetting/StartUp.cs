@@ -1,10 +1,17 @@
-﻿namespace P02_FootballBetting
+﻿namespace P02_FootballBetting;
+
+public class StartUp
 {
-    internal class StartUp
+    static void Main()
     {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello, World!");
-        }
+        //Console.WriteLine("Hello, World!");
+
+        //FootballBettingContext context = new FootballBettingContext();
+
+        //FootballBettingContext contex = new FootballBettingContext();
+
+
+
     }
+
 }

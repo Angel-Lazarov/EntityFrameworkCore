@@ -1,9 +1,10 @@
-﻿namespace P01_StudentSystem;
-public class StartUp
+﻿namespace P01_StudentSystem
 {
-    static void Main()
+    public class StartUp
     {
-
+        static void Main()
+        {
+            Console.WriteLine("Hello, World!");
+        }
     }
-
 }

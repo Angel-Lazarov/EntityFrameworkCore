@@ -3,13 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HiveOnRewards", "D:\install-OLD\C#\DB\EntityFrameworkCore\HiveOnRewards\HiveOnRewards.csproj", "{7A8B7AAE-5088-4387-80AF-439475CF497B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CinemaApp", "CinemaApp\CinemaApp.csproj", "{94926481-2812-4EDF-9C01-438762D705DB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CinemaApp", "CinemaApp\CinemaApp.csproj", "{5243FB24-85B1-4DFA-9E9E-C24844496309}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinemaApp.Infrastructure", "CinemaApp.Infrastructure\CinemaApp.Infrastructure.csproj", "{9BA1032D-E86C-45B9-9319-5C8C08166A89}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinemaApp.Core", "CinemaApp.Core\CinemaApp.Core.csproj", "{4A328704-0F49-4114-B6DC-52BABC090F09}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HiveOnRewards", "D:\install-OLD\C#\DB\EntityFrameworkCore\HiveOnRewards\HiveOnRewards.csproj", "{7A8B7AAE-5088-4387-80AF-439475CF497B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,22 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{94926481-2812-4EDF-9C01-438762D705DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94926481-2812-4EDF-9C01-438762D705DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94926481-2812-4EDF-9C01-438762D705DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94926481-2812-4EDF-9C01-438762D705DB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7A8B7AAE-5088-4387-80AF-439475CF497B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7A8B7AAE-5088-4387-80AF-439475CF497B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A8B7AAE-5088-4387-80AF-439475CF497B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A8B7AAE-5088-4387-80AF-439475CF497B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5243FB24-85B1-4DFA-9E9E-C24844496309}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5243FB24-85B1-4DFA-9E9E-C24844496309}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5243FB24-85B1-4DFA-9E9E-C24844496309}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5243FB24-85B1-4DFA-9E9E-C24844496309}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9BA1032D-E86C-45B9-9319-5C8C08166A89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9BA1032D-E86C-45B9-9319-5C8C08166A89}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9BA1032D-E86C-45B9-9319-5C8C08166A89}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9BA1032D-E86C-45B9-9319-5C8C08166A89}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4A328704-0F49-4114-B6DC-52BABC090F09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4A328704-0F49-4114-B6DC-52BABC090F09}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4A328704-0F49-4114-B6DC-52BABC090F09}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4A328704-0F49-4114-B6DC-52BABC090F09}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
